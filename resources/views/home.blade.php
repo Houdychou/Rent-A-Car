@@ -52,34 +52,44 @@
                         wherever and whenever you need it.</p>
                     <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
-                <form>
+                <form method="POST">
+                    @csrf
                     <div class="form-content">
                         <h2>Book your car</h2>
                         <div class="select-part">
-                            <select class="custom-select" name="type-vehicle" id="type-vehicle">
-                                <option selected disabled>Vehicle Type</option>
+
+                            <select class="custom-select" name="type" id="type-vehicle" required>
+                                <option disabled {{ request('type') ? '' : 'selected' }}>Vehicle Type</option>
                                 @foreach($typeVehicules as $type)
-                                    <option value="{{ $type->name }}">{{ $type->name }}</option>
+                                    <option value="{{ $type->name }}" {{ request('type') === $type->name ? 'selected' : '' }}>
+                                        {{ $type->name }}
+                                    </option>
                                 @endforeach
                             </select>
 
-                            <select class="custom-select" name="energy-vehicle" id="energy-vehicle">
-                                <option selected disabled>Energy Type</option>
+                            <select class="custom-select" name="energy" id="energy-vehicle" required>
+                                <option disabled {{ request('energy') ? '' : 'selected' }}>Energy Type</option>
                                 @foreach($fuelTypes as $fuel)
-                                    <option value="{{ $fuel->fuel_type }}">{{ $fuel->fuel_type }}</option>
+                                    <option value="{{ $fuel->fuel_type }}" {{ request('energy') === $fuel->fuel_type ? 'selected' : '' }}>
+                                        {{ $fuel->fuel_type }}
+                                    </option>
                                 @endforeach
                             </select>
 
-                            <select class="custom-select" name="gear-vehicle" id="gear-vehicle">
-                                <option selected disabled>Type Of Gear</option>
+                            <select class="custom-select" name="gear" id="gear-vehicle" required>
+                                <option disabled {{ request('gear') ? '' : 'selected' }}>Type Of Gear</option>
                                 @foreach($gearType as $gear)
-                                    <option value="{{ $gear->transmission }}">{{ $gear->transmission }}</option>
+                                    <option value="{{ $gear->transmission }}" {{ request('gear') === $gear->transmission ? 'selected' : '' }}>
+                                        {{ $gear->transmission }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
+
                         <input type="submit" class="btn-orange submit-form" value="Book Now">
                     </div>
                 </form>
+
             </div>
             <img src="{{ asset('images/blur-bmw-main.png') }}" alt="bmw blur image">
         </div>

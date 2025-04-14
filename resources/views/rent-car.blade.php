@@ -53,8 +53,8 @@
         <div class="rent-car">
             <div class="left-part">
                 <h2>{{ Str::Title($specificVehicule->brand) . " " . $specificVehicule->model }}</h2>
-                <p><span class="price">${{ $specificVehicule->price_per_day }}</span> <span
-                        class="grey-span">/ day</span></p>
+                <p><span class="price">${{ $specificVehicule->price_per_day }}</span>
+                    <span class="grey-span">/ day</span></p>
                 <img class="mainImg" src="{{ asset($specificVehicule->image_url) }}"
                      alt="{{ $specificVehicule->brand . " " . $specificVehicule->model }}">
                 <div class="carousel">
