@@ -53,10 +53,6 @@ ul li a {
     color: black;
 }
 
-.details {
-    font-weight: 700;
-}
-
 .help {
     display: flex;
     flex-direction: row;
@@ -82,7 +78,14 @@ ul li a {
     margin-top: 3rem;
 }
 
-.details-car .left-part {
+main h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin: 7rem 0 7rem 0;
+    text-align: center;
+}
+
+.left-part {
     width: 45%;
 }
 
@@ -91,6 +94,10 @@ ul li a {
     border-radius: 12px;
     height: 450px;
     width: 100%;
+}
+
+.left-part h2 {
+    font-size: 40px;
 }
 
 .carousel {
@@ -153,113 +160,8 @@ ul li a {
     width: 45%;
 }
 
-.right-part h2 {
-    margin-bottom: 3rem;
-}
-
-.specs-content {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
-    margin-bottom: 3rem;
-}
-
-.specifications {
-    border-radius: 12px;
-    padding: 24px;
-    background-color: rgba(250, 250, 250, 1);
-}
-
-.rent {
-    width: 40% !important;
-}
-
-.car-equipment {
-    margin-top: 3rem;
-}
-
-.car-equipment h4 {
-    font-weight: 600;
-    font-size: 24px;
-}
-
-.equipment-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.equipment {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.equipment span {
-    margin-left: 10px;
-}
-
-.cars h2 {
-    margin: 0;
-    font-size: 50px;
-}
-
-.cars-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin: 3rem 0 3rem 0;
-}
-
-.link-cars {
-    transition: 0.3s ease-in;
-    color: black;
-}
-
-.link-cars:hover {
-    color: green;
-}
-
-.grid-cars {
-    display: grid;
-    gap: 3rem;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-cars .vehicle-img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    width: 100%;
-    height: 330px;
-}
-
-.card-cars {
-    border-radius: 12px;
-    background-color: #FAFAFA;
-}
-
-.container-cars {
-    margin-top: 1rem;
-    padding: 0 2rem 0 2rem;
-}
-
-.top-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.content-cars h3, .price {
-    font-size: 24px;
-    margin: 0 0 10px 0;
-}
-
-.content-cars {
-    display: flex;
-    flex-direction: column;
-}
-
 .price {
+    font-size: 24px;
     font-weight: 600;
     color: rgba(89, 55, 224, 1);
 }
@@ -267,45 +169,6 @@ ul li a {
 .grey-span {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
-}
-
-.icons {
-    width: 20px;
-    height: 20px;
-}
-
-.vehicle-details {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.details {
-    display: flex;
-    align-items: center;
-}
-
-.details span {
-    margin-left: 8px;
-}
-
-.details-btn {
-    transition: 0.3s ease;
-    margin: 2rem 0 2rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    width: 100%;
-    height: 50px;
-    color: white;
-    background-color: rgba(89, 55, 224, 1);
-}
-
-.details-btn:hover {
-    background-color: darkblue;
 }
 
 .footer-content {
@@ -334,6 +197,57 @@ ul li a {
 .copy {
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.hero {
+    margin-top: 5rem;
+    height: 427px;
+    background-color: #5937E0;
+    border-radius: 40px;
+    padding: 2rem;
+}
+
+.hero h2 {
+    margin: 0 0 2rem 0;
+}
+
+.hero .phone {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-left {
+    width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.hero-left .all-cars {
+    width: 154px;
+}
+
+.hero-title {
+    font-size: 60px;
+}
+
+.hero-text {
+    width: 464px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.hero-right {
+    width: 45%;
 }
 
 .btn-orange {

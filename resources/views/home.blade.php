@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="/" class="home">Home</a></li>
                     <li><a href="/vehicules" class="vehicules">Vehicles</a></li>
-                    <li><a href="/details" class="details">Details</a></li>
+                    <li><a href="#" class="details">Details</a></li>
                     <li><a href="/about" class="about">About us</a></li>
                 </ul>
             </nav>
@@ -50,7 +50,7 @@
                     <p class="hero-text">Rent a car in just a few taps. Fast, flexible, and affordable, your next ride
                         is always ready,
                         wherever and whenever you need it.</p>
-                    <a class="all-cars btn-orange" href="/cars">View all cars</a>
+                    <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
                 <form>
                     <div class="form-content">
