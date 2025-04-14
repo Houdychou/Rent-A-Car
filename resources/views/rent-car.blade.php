@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/rent-car.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -42,12 +43,18 @@
     </header>
 
     <main>
+        @if (session('message'))
+            <div class="custom-alert">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <h1>Reservation</h1>
         <div class="rent-car">
             <div class="left-part">
-                <h2>{{ Str::upper($specificVehicule->brand) . " " . $specificVehicule->model }}</h2>
-                <p><span class="price">${{ $specificVehicule->price_per_day }}</span> <span
-                        class="grey-span">/ day</span></p>
+                <h2>{{ Str::Title($specificVehicule->brand) . " " . $specificVehicule->model }}</h2>
+                <p><span class="price">${{ $specificVehicule->price_per_day }}</span>
+                    <span class="grey-span">/ day</span></p>
                 <img class="mainImg" src="{{ asset($specificVehicule->image_url) }}"
                      alt="{{ $specificVehicule->brand . " " . $specificVehicule->model }}">
                 <div class="carousel">
@@ -59,7 +66,41 @@
                 </div>
             </div>
             <div class="right-part">
+                <form method="POST">
+                    @csrf
+                    <div class="form-content">
+                        <label for="startDate">Start date</label>
+                        <input type="text" id="startDate" name="startDate" placeholder="Select a start date" value="{{ old("startDate") }}">
+                        @error("startDate")
+                        <p class="error">{{ $message }}</p>
+                        @enderror
+                    </div>
 
+                    <div class="form-content">
+                        <label for="endDate">End date</label>
+                        <input type="text" id="endDate" name="endDate" placeholder="Select a return date" value="{{ old("endDate") }}">
+                        @error("endDate")
+                         <p class="error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="form-content">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Email" value="{{ old("email") }}">
+                        @error("email")
+                        <p class="error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <input type="hidden" name="priceDay" id="priceDay" value="{{ $specificVehicule->price_per_day }}">
+
+                    <div class="checkbox-wrapper">
+                        <img src="{{ asset("images/icons/equipement-icon.svg") }}" alt="check icon">
+                        <p class="totalPrice">Total price : 0$</p>
+                    </div>
+
+                    <button type="submit">Book Now</button>
+                </form>
             </div>
         </div>
 
@@ -110,6 +151,48 @@
     </footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    const reservedRanges = @json($reservedDates);
+    const disabledDates = new Set();
+
+    reservedRanges.forEach(range => {
+        let start = new Date(range.start_date);
+        const end = new Date(range.end_date);
+
+        while (start <= end) {
+            disabledDates.add(start.toISOString().split('T')[0]);
+            start.setDate(start.getDate() + 1);
+        }
+    });
+
+    const preBlockedDates = new Set();
+
+    reservedRanges.forEach(range => {
+        const start = new Date(range.start_date);
+        const previous = new Date(start);
+        previous.setDate(previous.getDate() - 1);
+
+        preBlockedDates.add(previous.toISOString().split('T')[0]);
+    });
+
+    const finalDisabled = Array.from(new Set([...disabledDates, ...preBlockedDates]));
+
+    flatpickr("#startDate", {
+        dateFormat: "Y-m-d",
+        disable: finalDisabled,
+        minDate: "today"
+    });
+
+    flatpickr("#endDate", {
+        dateFormat: "Y-m-d",
+        disable: finalDisabled,
+        minDate: "today"
+    });
+
+</script>
+
 <script src="{{ asset('js/carousel.js') }}"></script>
+<script src="{{ asset('js/reservation.js') }}"></script>
 </body>
 </html>

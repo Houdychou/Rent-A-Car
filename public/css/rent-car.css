@@ -85,6 +85,14 @@ main h1 {
     text-align: center;
 }
 
+.rent-car {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
 .left-part {
     width: 45%;
 }
@@ -102,7 +110,7 @@ main h1 {
 
 .carousel {
     width: 75%;
-    margin-top: 10px;
+    margin-top: 20px;
     gap: 1rem;
     display: flex;
     align-items: center;
@@ -112,7 +120,7 @@ main h1 {
 .carousel img {
     cursor: pointer;
     height: 100px;
-    width: 100px;
+    width: 140px;
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -157,6 +165,114 @@ main h1 {
 }
 
 .right-part {
+    width: 30%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form label {
+    display: none;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 12px;
+    background-color: #f6f6f6;
+    font-size: 0.95rem;
+    font-family: 'Nunito Sans', sans-serif;
+    outline: none;
+    box-shadow: none;
+}
+
+form input::placeholder {
+    color: black;
+}
+
+form .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+form button {
+    margin-top: 1rem;
+    padding: 0.9rem;
+    background-color: rgba(89, 55, 224, 1);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+form button:hover {
+    background-color: #5822b5;
+}
+
+.error {
+    color: red;
+}
+
+.hero {
+    margin-top: 5rem;
+    background-color: #5937E0;
+    border-radius: 40px;
+    padding: 2rem;
+}
+
+.hero h2 {
+    margin: 0 0 2rem 0;
+}
+
+.hero .phone {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.hero-content {
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-left {
+    width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.hero-left .all-cars {
+    width: 154px;
+}
+
+.hero-title {
+    font-size: 60px;
+}
+
+.hero-text {
+    width: 464px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.hero-right {
     width: 45%;
 }
 
@@ -199,58 +315,31 @@ main h1 {
     color: rgba(0, 0, 0, 0.5);
 }
 
-.hero {
-    margin-top: 5rem;
-    height: 427px;
-    background-color: #5937E0;
-    border-radius: 40px;
-    padding: 2rem;
-}
-
-.hero h2 {
-    margin: 0 0 2rem 0;
-}
-
-.hero .phone {
-    font-size: 40px;
-    margin-bottom: 0;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-left {
-    width: 40%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-}
-
-.hero-left .all-cars {
-    width: 154px;
-}
-
-.hero-title {
-    font-size: 60px;
-}
-
-.hero-text {
-    width: 464px;
+.custom-alert {
+    background-color: #e6f4ea;
+    color: #256029;
+    border: 1px solid #b7e0c0;
+    padding: 16px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: 500;
     font-size: 16px;
-    line-height: 24px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
 }
 
-.hero-right {
-    width: 45%;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .btn-orange {
+    margin-top: 20px;
     transition: 0.3s ease-in-out;
     display: inline-block;
     color: white;
