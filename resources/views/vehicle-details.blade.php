@@ -45,7 +45,7 @@
     <main>
         <div class="details-car">
             <div class="left-part">
-                <h1>{{ Str::upper($specificVehicule->brand) . " " . $specificVehicule->model }}</h1>
+                <h1>{{ Str::title($specificVehicule->brand) . " " . $specificVehicule->model }}</h1>
                 <p><span class="price">${{ $specificVehicule->price_per_day }}</span> <span
                             class="grey-span">/ day</span></p>
                 <img class="mainImg" src="{{ asset($specificVehicule->image_url) }}"

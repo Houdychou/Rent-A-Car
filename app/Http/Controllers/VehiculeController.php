@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Vehicule;
+use App\Models\VehiculeAvailability;
 use App\Models\VehiculeType;
 use Illuminate\Http\Request;
+use DateTime;
 
 class VehiculeController extends Controller
 {
@@ -133,7 +136,8 @@ class VehiculeController extends Controller
         return view("vehicle-details", ["specificVehicule" => $vehicule, "vehicules" => $allVehicules, "carousel" => $carousel, "equipments" => $equipement]);
     }
 
-    public function rentCar($id) {
+    public function rentCar($id)
+    {
         $vehicule = Vehicule::join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
             ->where("vehicules.id", $id)
             ->where("vehicule_photos.display_order", "=", 0)
@@ -143,6 +147,52 @@ class VehiculeController extends Controller
             ->where("vehicules.id", "=", $id)
             ->get();
 
-        return view("rent-car", ["specificVehicule" => $vehicule, "carousel" => $carousel]);
+        $reservedDates = Reservation::where("vehicule_id", $id)
+            ->select("start_date", "end_date")
+            ->get()
+            ->toArray();
+
+        return view("rent-car", ["specificVehicule" => $vehicule, "carousel" => $carousel, "reservedDates" => $reservedDates]);
+    }
+
+    public function store(Request $request, $id)
+    {
+        $data = $request->validate([
+            "startDate" => ["required", "date_format:Y-m-d"],
+            "endDate" => ["required", "date_format:Y-m-d", "after:startDate"],
+            "email" => ["required", "email"],
+            "priceDay" => ["required"]
+        ]);
+
+        $vehicule = Vehicule::join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
+            ->where("vehicules.id", $id)
+            ->where("vehicule_photos.display_order", "=", 0)
+            ->firstOrFail();
+
+        $date1 = new DateTime($data['startDate']);
+        $date2 = new DateTime($data['endDate']);
+
+        $interval = $date1->diff($date2);
+        $price = $vehicule->price_per_day;
+
+        Reservation::query()
+            ->insert([
+                "vehicule_id" => $id,
+                "email" => $data['email'],
+                "start_date" => $data['startDate'],
+                "end_date" => $data['endDate'],
+                "total_price" => $interval->d * $price,
+                "status" => "pending"
+            ]);
+
+        VehiculeAvailability::query()
+            ->insert([
+                "vehicule_id" => $id,
+                "start_date" => $data['startDate'],
+                "end_date" => $data['endDate'],
+                "is_available" => 1
+            ]);
+
+        return redirect()->route('rent-car', ['id' => $id])->with('message', "Your reservation has been successfully confirmed. You will receive a confirmation and further details by email.");
     }
 }

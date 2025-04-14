@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiculeAvailabilityTable extends Migration
+class CreateVehiculeAvailabilitiesTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('vehicule_availability', function (Blueprint $table) {
+        Schema::create('vehicule_availabilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicule_id')->constrained('vehicules')->cascadeOnDelete();
             $table->date('start_date');
@@ -20,6 +20,6 @@ class CreateVehiculeAvailabilityTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('vehicule_availability');
+        Schema::dropIfExists('vehicule_availabilities');
     }
 }

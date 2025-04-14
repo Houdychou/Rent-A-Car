@@ -120,7 +120,7 @@ main h1 {
 .carousel img {
     cursor: pointer;
     height: 100px;
-    width: 100px;
+    width: 140px;
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -180,6 +180,7 @@ form label {
 
 form input[type="text"],
 form input[type="email"] {
+    width: 100%;
     padding: 0.8rem 1rem;
     border: none;
     border-radius: 12px;
@@ -191,7 +192,7 @@ form input[type="email"] {
 }
 
 form input::placeholder {
-    color: #888;
+    color: black;
 }
 
 form .checkbox-wrapper {
@@ -206,7 +207,7 @@ form .checkbox-wrapper {
 form button {
     margin-top: 1rem;
     padding: 0.9rem;
-    background-color: #6c2bd9;
+    background-color: rgba(89, 55, 224, 1);
     color: white;
     border: none;
     border-radius: 12px;
@@ -218,6 +219,10 @@ form button {
 
 form button:hover {
     background-color: #5822b5;
+}
+
+.error {
+    color: red;
 }
 
 .hero {
