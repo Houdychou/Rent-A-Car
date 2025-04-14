@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    font-family: "Work Sans", serif;
+}
+
+body {
+    background-color: #FFFFFF !important;
+    margin: 0;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    padding: 3rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car-rental {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-rental p {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li a {
+    margin: 0 2rem 0 2rem;
+    color: black;
+}
+
+.vehicles {
+    font-weight: 700;
+}
+
+.help {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.help p {
+    margin: 5px;
+}
+
+.help-content {
+    margin-left: 8px;
+}
+
+.help-content .phone-number {
+    font-weight: 700;
+}
+
+.footer-content {
+    margin: 7rem 0 7rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.bold-text {
+    font-weight: 600;
+}
+
+.card-footer p {
+    margin: 0 0 8px 8px;
+}
+
+.copy {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-orange {
+    transition: 0.3s ease-in-out;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    background-color: #FF9E0C;
+    border-radius: 12px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.btn-orange:hover {
+    opacity: 0.9;
+    background-color: green;
+}
