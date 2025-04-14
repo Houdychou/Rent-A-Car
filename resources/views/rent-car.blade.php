@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/rent-car.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -59,7 +60,23 @@
                 </div>
             </div>
             <div class="right-part">
+                <form>
+                    <label for="startDate">Start date</label>
+                    <input type="text" id="startDate" name="startDate" placeholder="Select a start date">
 
+                    <label for="endDate">End date</label>
+                    <input type="text" id="endDate" name="endDate" placeholder="Select a return date">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Email">
+
+                    <div class="checkbox-wrapper">
+                        <img src="{{ asset("images/icons/equipement-icon.svg") }}" alt="">
+                        <p class="totalPrice">Total price</p>
+                    </div>
+
+                    <button type="submit">Book Now</button>
+                </form>
             </div>
         </div>
 
@@ -111,5 +128,22 @@
 </div>
 
 <script src="{{ asset('js/carousel.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#startDate", {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+
+    flatpickr("#endDate", {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+</script>
+
 </body>
 </html>

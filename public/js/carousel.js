@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainImg = document.querySelector(".mainImg");
     const body = document.querySelector("body");
 
-    body.style.overflow = "inherit";
-
     let zoomContainer = document.createElement("div");
     zoomContainer.className = "zoom-container";
     zoomContainer.style.display = "none";
