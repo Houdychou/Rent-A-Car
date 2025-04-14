@@ -53,10 +53,6 @@ ul li a {
     color: black;
 }
 
-.details {
-    font-weight: 700;
-}
-
 .help {
     display: flex;
     flex-direction: row;
@@ -164,8 +160,15 @@ main h1 {
     width: 45%;
 }
 
-.right-part h2 {
-    margin-bottom: 3rem;
+.price {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(89, 55, 224, 1);
+}
+
+.grey-span {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .footer-content {
@@ -194,6 +197,57 @@ main h1 {
 .copy {
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
+}
+
+.hero {
+    margin-top: 5rem;
+    height: 427px;
+    background-color: #5937E0;
+    border-radius: 40px;
+    padding: 2rem;
+}
+
+.hero h2 {
+    margin: 0 0 2rem 0;
+}
+
+.hero .phone {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-left {
+    width: 40%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.hero-left .all-cars {
+    width: 154px;
+}
+
+.hero-title {
+    font-size: 60px;
+}
+
+.hero-text {
+    width: 464px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.hero-right {
+    width: 45%;
 }
 
 .btn-orange {

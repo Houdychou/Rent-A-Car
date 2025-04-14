@@ -50,7 +50,7 @@
                     <p class="hero-text">Rent a car in just a few taps. Fast, flexible, and affordable, your next ride
                         is always ready,
                         wherever and whenever you need it.</p>
-                    <a class="all-cars btn-orange" href="/cars">View all cars</a>
+                    <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
                 <form>
                     <div class="form-content">

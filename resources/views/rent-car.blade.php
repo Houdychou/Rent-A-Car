@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Page d'accueil">
-    <title>Page d'accueil</title>
+    <meta name="description" content="Réserver - {{ Str::upper($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}">
+    <title>Réserver - {{ Str::title($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,7 +13,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/rent-car.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
 
 <body>
@@ -61,6 +60,20 @@
             </div>
             <div class="right-part">
 
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h2 class="hero-title">Looking for a car?</h2>
+                    <h2 class="phone">+537 547-6401</h2>
+                    <p class="hero-text">Call to this number to receive an incredibly amount of beautiful cars for free!</p>
+                    <a class="all-cars btn-orange" href="/vehicules">Book Now</a>
+                </div>
+                <div class="hero-right">
+                    <img src="{{ asset('images/blur-bmw-main.png') }}" alt="bmw blur image">
+                </div>
             </div>
         </div>
     </main>

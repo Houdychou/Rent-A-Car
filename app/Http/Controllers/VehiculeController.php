@@ -104,7 +104,8 @@ class VehiculeController extends Controller
 
     public function detailVehicule($id)
     {
-        $vehicule = Vehicule::join("vehicule_types", "vehicule_types.id", "=", "vehicules.vehicule_type_id")
+        $vehicule = Vehicule::select("vehicules.*", "vehicule_types.name", "vehicule_photos.image_url")
+            ->join("vehicule_types", "vehicule_types.id", "=", "vehicules.vehicule_type_id")
             ->join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
             ->where("vehicules.id", $id)
             ->where("vehicule_photos.display_order", "=", 0)
