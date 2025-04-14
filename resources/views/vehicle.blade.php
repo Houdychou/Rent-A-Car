@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/vehicule.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vehicle.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="/" class="home">Home</a></li>
                     <li><a href="/vehicules" class="vehicles">Vehicles</a></li>
-                    <li><a href="/details" class="details">Details</a></li>
+                    <li><a href="#" class="details">Details</a></li>
                     <li><a href="/about" class="about">About us</a></li>
                 </ul>
             </nav>

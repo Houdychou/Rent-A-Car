@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="/" class="home">Home</a></li>
                     <li><a href="/vehicules" class="vehicules">Vehicles</a></li>
-                    <li><a href="/details" class="details">Details</a></li>
+                    <li><a href="#" class="details">Details</a></li>
                     <li><a href="/about" class="about">About us</a></li>
                 </ul>
             </nav>

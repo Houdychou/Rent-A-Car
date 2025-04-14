@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     links.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
-
             const url = link.getAttribute("href");
 
             fetch(url, {
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     vehicules.forEach(v => {
                         const card = `
                                 <div class="card-cars">
-                                    <img src="/${v.image_url}" class="vehicle-img" alt="${v.brand} ${v.model}">
+                                    <img src="${v.image_url}" class="vehicle-img" alt="${v.brand} ${v.model}">
                                     <div class="container-cars">
                                         <div class="top-content">
                                             <div class="content-cars">
