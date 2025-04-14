@@ -53,7 +53,6 @@
                     <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
                 <form method="POST">
-                    @csrf
                     <div class="form-content">
                         <h2>Book your car</h2>
                         <div class="select-part">
