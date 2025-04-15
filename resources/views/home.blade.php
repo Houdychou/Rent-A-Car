@@ -52,51 +52,49 @@
                         wherever and whenever you need it.</p>
                     <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
-                <form>
+                <form action="/vehicules" method="GET">
                     <div class="form-content">
                         <h2>Book your car</h2>
                         <div class="select-part">
-                            <select class="custom-select" name="type" id="type-vehicle" required>
-                                <option disabled>Vehicle Type</option>
+                            <select class="custom-select" name="type" id="type-vehicle">
+                                <option value="" disabled {{ request('type') ? '' : 'selected' }}>Vehicle Type</option>
                                 @foreach($typeVehicules as $type)
-                                    <option value="{{ $type->name }}" selected>
+                                    <option value="{{ $type->name }}" {{ request('type') == $type->name ? 'selected' : '' }}>
                                         {{ $type->name }}
                                     </option>
                                 @endforeach
                             </select>
 
-                            <select class="custom-select" name="energy" id="energy-vehicle" required>
-                                <option disabled>Energy Type</option>
+                            <select class="custom-select" name="energy" id="energy-vehicle">
+                                <option value="" disabled {{ request('energy') ? '' : 'selected' }}>Energy Type</option>
                                 @foreach($fuelTypes as $fuel)
-                                    <option value="{{ $fuel->fuel_type }}" selected>
+                                    <option value="{{ $fuel->fuel_type }}" {{ request('energy') == $fuel->fuel_type ? 'selected' : '' }}>
                                         {{ $fuel->fuel_type }}
                                     </option>
                                 @endforeach
                             </select>
 
-                            <select class="custom-select" name="gear" id="gear-vehicle" required>
-                                <option disabled>Type Of Gear</option>
+                            <select class="custom-select" name="gear" id="gear-vehicle">
+                                <option value="" disabled {{ request('gear') ? '' : 'selected' }}>Type Of Gear</option>
                                 @foreach($gearType as $gear)
-                                    <option value="{{ $gear->transmission }}" selected>
+                                    <option value="{{ $gear->transmission }}" {{ request('gear') == $gear->transmission ? 'selected' : '' }}>
                                         {{ $gear->transmission }}
                                     </option>
                                 @endforeach
                             </select>
 
-                            <select class="custom-select" name="year" id="year-vehicle" required>
-                                <option disabled>Year</option>
+                            <select class="custom-select" name="year" id="year-vehicle">
+                                <option value="" disabled {{ request('year') ? '' : 'selected' }}>Year</option>
                                 @foreach($years as $year)
-                                    <option value="{{ $year->year }}" selected>
+                                    <option value="{{ $year->year }}" {{ request('year') == $year->year ? 'selected' : '' }}>
                                         {{ $year->year }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-
                         <input type="submit" class="btn-orange submit-form" value="Book Now">
                     </div>
                 </form>
-
             </div>
             <img src="{{ asset('images/blur-bmw-main.png') }}" alt="bmw blur image">
         </div>

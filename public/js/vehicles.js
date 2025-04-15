@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll("a.custom-link");
-
     const range = document.querySelector("#price");
     const filterPriceP = document.querySelector(".filter-price");
     range.addEventListener("input", function (e) {
@@ -16,12 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => response.json())
             .then(vehicules => {
+                const divError = document.querySelector(".errorDiv");
                 const container = document.getElementById('vehicle-list');
                 container.innerHTML = '';
 
                 if (vehicules.length === 0) {
-                    container.innerHTML = `<div class="no-results"><p>No vehicles match your criteria.</p></div>`
+                    divError.classList.add("no-results");
+                    divError.innerHTML = `<p>No vehicles match your criteria.</p>`
+                    return;
                 }
+
+                divError.innerHTML = ``;
+                divError.classList.remove("no-results");
 
                 vehicules.forEach(v => {
                     const card = `
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             </div>
                                             <div class="details">
                                                 <img src="/images/icons/air-conditionner.svg" class="icons" alt="AC">
-                                                <span class="grey-span">${v.air_conditioning ? 1 : "Air Conditioner"}</span>
+                                                <span class="grey-span">${v.air_conditioning ? "not defined" : "Air Conditioner"}</span>
                                             </div>
                                         </div>
                                         <a href="/vehicules/${v.id}" class="details-btn">View Details</a>

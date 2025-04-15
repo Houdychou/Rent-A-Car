@@ -81,6 +81,11 @@
             </div>
         </form>
         <div class="cars">
+            @if(isset($noResult) && $noResult)
+                <div class="no-results">Aucun véhicule ne correspond à vos critères.</div>
+            @endif
+            <div class="errorDiv">
+            </div>
             <div class="grid-cars" id="vehicle-list">
                 @foreach($vehicules as $vehicule)
                     <div class="card-cars">
