@@ -207,13 +207,6 @@ a.details {
     font-size: 50px;
 }
 
-.cars-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin: 0 0 3rem 0;
-}
-
 .link-cars {
     transition: 0.3s ease-in;
     color: black;
