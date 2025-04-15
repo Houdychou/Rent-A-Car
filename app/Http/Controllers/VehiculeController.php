@@ -13,12 +13,16 @@ class VehiculeController extends Controller
 {
     public function index()
     {
-        $typeVehicules = VehiculeType::select('id', 'name')
+        $typeVehicules = VehiculeType::select('name')
             ->groupBy('name')
             ->get();
 
         $fuelTypes = Vehicule::select('fuel_type')
             ->groupBy('fuel_type')
+            ->get();
+
+        $year = Vehicule::select('year')
+            ->groupBy('year')
             ->get();
 
         $vehicules = Vehicule::select("vehicules.id", "vehicules.transmission", "vehicule_types.name", "vehicule_photos.image_url", "vehicules.price_per_day", "vehicules.brand", "vehicules.model", "vehicules.fuel_type")
@@ -33,12 +37,16 @@ class VehiculeController extends Controller
             ->groupBy('transmission')
             ->get();
 
-        return view('home', ["vehicules" => $vehicules, "typeVehicules" => $typeVehicules, "fuelTypes" => $fuelTypes, "gearType" => $gearType]);
+        return view('home', ["vehicules" => $vehicules, "years" => $year, "typeVehicules" => $typeVehicules, "fuelTypes" => $fuelTypes, "gearType" => $gearType]);
+    }
+
+    public function filterHome() {
+
     }
 
     public function vehicules()
     {
-        $typeVehicules = VehiculeType::select('id', 'name')
+        $typeVehicules = VehiculeType::select('name')
             ->groupBy('name')
             ->get();
 
@@ -86,9 +94,17 @@ class VehiculeController extends Controller
                 ->where("vehicule_photos.display_order", "=", 0)
                 ->orderBy("vehicules.id", "ASC")
                 ->get();
+        } else if ($param === "price") {
+            $vehicules = Vehicule::select("vehicules.id", "vehicules.transmission", "vehicule_types.name", "vehicule_photos.image_url", "vehicules.price_per_day", "vehicules.brand", "vehicules.model", "vehicules.fuel_type")
+                ->join("vehicule_types", "vehicule_types.id", "=", "vehicules.vehicule_type_id")
+                ->join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
+                ->where("vehicules.price_per_day", "<=",  $value)
+                ->where("vehicule_photos.display_order", "=", 0)
+                ->orderBy("vehicules.id", "ASC")
+                ->get();
         }
 
-        $typeVehicules = VehiculeType::select('id', 'name')
+        $typeVehicules = VehiculeType::select('name')
             ->groupBy('name')
             ->get();
         $fuelTypes = Vehicule::select('fuel_type')

@@ -52,35 +52,42 @@
                         wherever and whenever you need it.</p>
                     <a class="all-cars btn-orange" href="/vehicules">View all cars</a>
                 </div>
-                <form method="POST">
-                    @csrf
+                <form>
                     <div class="form-content">
                         <h2>Book your car</h2>
                         <div class="select-part">
-
                             <select class="custom-select" name="type" id="type-vehicle" required>
-                                <option disabled {{ request('type') ? '' : 'selected' }}>Vehicle Type</option>
+                                <option disabled>Vehicle Type</option>
                                 @foreach($typeVehicules as $type)
-                                    <option value="{{ $type->name }}" {{ request('type') === $type->name ? 'selected' : '' }}>
+                                    <option value="{{ $type->name }}" selected>
                                         {{ $type->name }}
                                     </option>
                                 @endforeach
                             </select>
 
                             <select class="custom-select" name="energy" id="energy-vehicle" required>
-                                <option disabled {{ request('energy') ? '' : 'selected' }}>Energy Type</option>
+                                <option disabled>Energy Type</option>
                                 @foreach($fuelTypes as $fuel)
-                                    <option value="{{ $fuel->fuel_type }}" {{ request('energy') === $fuel->fuel_type ? 'selected' : '' }}>
+                                    <option value="{{ $fuel->fuel_type }}" selected>
                                         {{ $fuel->fuel_type }}
                                     </option>
                                 @endforeach
                             </select>
 
                             <select class="custom-select" name="gear" id="gear-vehicle" required>
-                                <option disabled {{ request('gear') ? '' : 'selected' }}>Type Of Gear</option>
+                                <option disabled>Type Of Gear</option>
                                 @foreach($gearType as $gear)
-                                    <option value="{{ $gear->transmission }}" {{ request('gear') === $gear->transmission ? 'selected' : '' }}>
+                                    <option value="{{ $gear->transmission }}" selected>
                                         {{ $gear->transmission }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <select class="custom-select" name="year" id="year-vehicle" required>
+                                <option disabled>Year</option>
+                                @foreach($years as $year)
+                                    <option value="{{ $year->year }}" selected>
+                                        {{ $year->year }}
                                     </option>
                                 @endforeach
                             </select>
