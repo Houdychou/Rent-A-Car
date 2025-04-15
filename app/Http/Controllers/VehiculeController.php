@@ -116,7 +116,7 @@ class VehiculeController extends Controller
                 ->join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
                 ->where("vehicules.price_per_day", "<=", $value)
                 ->where("vehicule_photos.display_order", "=", 0)
-                ->orderBy("vehicules.id", "ASC")
+                ->orderBy("vehicules.price_per_day", "ASC")
                 ->get();
         }
 
