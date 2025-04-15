@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     const links = document.querySelectorAll("a.custom-link");
     const range = document.querySelector("#price");
     const filterPriceP = document.querySelector(".filter-price");
+    const divError = document.querySelector(".errorDiv");
+
     range.addEventListener("input", function (e) {
         filterPriceP.textContent = range.value + "$";
     })
@@ -15,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => response.json())
             .then(vehicules => {
-                const divError = document.querySelector(".errorDiv");
                 const container = document.getElementById('vehicle-list');
                 container.innerHTML = '';
 
@@ -70,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     links.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
+
             const url = link.getAttribute("href");
 
             fetch(url, {
@@ -80,6 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => response.json())
                 .then(vehicules => {
                     const container = document.getElementById('vehicle-list');
+
+                    divError.innerHTML = ``;
+                    divError.classList.remove("no-results");
                     container.innerHTML = '';
 
                     vehicules.forEach(v => {

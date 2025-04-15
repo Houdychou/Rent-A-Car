@@ -7,6 +7,8 @@ use App\Models\Vehicule;
 use App\Models\VehiculeAvailability;
 use App\Models\VehiculeType;
 use Illuminate\Http\Request;
+use App\Mail\ReservationConfirmation;
+use Illuminate\Support\Facades\Mail;
 use DateTime;
 
 class VehiculeController extends Controller
@@ -114,7 +116,7 @@ class VehiculeController extends Controller
                 ->join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
                 ->where("vehicules.price_per_day", "<=", $value)
                 ->where("vehicule_photos.display_order", "=", 0)
-                ->orderBy("vehicules.id", "ASC")
+                ->orderBy("vehicules.price_per_day", "ASC")
                 ->get();
         }
 
@@ -177,7 +179,7 @@ class VehiculeController extends Controller
             ->where("vehicules.id", "=", $id)
             ->get();
 
-        $reservedDates = Reservation::where("vehicule_id", $id)
+        $reservedDates = VehiculeAvailability::where("vehicule_id", $id)
             ->select("start_date", "end_date")
             ->get()
             ->toArray();
@@ -205,23 +207,29 @@ class VehiculeController extends Controller
         $interval = $date1->diff($date2);
         $price = $vehicule->price_per_day;
 
+        $reservationData = [
+            "vehicule_id" => $id,
+            "email" => $data['email'],
+            "start_date" => $data['startDate'],
+            "end_date" => $data['endDate'],
+            "total_price" => $interval->d * $price,
+            "status" => "pending"
+        ];
+
         Reservation::query()
-            ->insert([
-                "vehicule_id" => $id,
-                "email" => $data['email'],
-                "start_date" => $data['startDate'],
-                "end_date" => $data['endDate'],
-                "total_price" => $interval->d * $price,
-                "status" => "pending"
-            ]);
+            ->insert($reservationData);
+
+        Mail::to($data['email'])->send(new ReservationConfirmation($reservationData, $vehicule));
+
+        $vehiculeAvailabilityData = [
+            "vehicule_id" => $id,
+            "start_date" => $data['startDate'],
+            "end_date" => $data['endDate'],
+            "is_available" => 1
+        ];
 
         VehiculeAvailability::query()
-            ->insert([
-                "vehicule_id" => $id,
-                "start_date" => $data['startDate'],
-                "end_date" => $data['endDate'],
-                "is_available" => 1
-            ]);
+            ->insert($vehiculeAvailabilityData);
 
         return redirect()->route('rent-car', ['id' => $id])->with('message', "Your reservation has been successfully confirmed. You will receive a confirmation and further details by email.");
     }
