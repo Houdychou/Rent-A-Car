@@ -196,6 +196,20 @@ class VehiculeController extends Controller
             "priceDay" => ["required"]
         ]);
 
+        $start = $data['startDate'];
+        $end = $data['endDate'];
+
+        $existingReservations = Reservation::where('vehicule_id', $id)
+            ->where(function ($query) use ($start, $end) {
+                $query->where('start_date', '<=', $end)
+                    ->where('end_date', '>=', $start);
+            })
+            ->exists();
+
+        if ($existingReservations) {
+            return back()->withErrors(['startDate' => 'These dates are already taken.'])->withInput();
+        }
+
         $vehicule = Vehicule::join("vehicule_photos", "vehicules.id", "=", "vehicule_photos.vehicule_id")
             ->where("vehicules.id", $id)
             ->where("vehicule_photos.display_order", "=", 0)
@@ -210,8 +224,8 @@ class VehiculeController extends Controller
         $reservationData = [
             "vehicule_id" => $id,
             "email" => $data['email'],
-            "start_date" => $data['startDate'],
-            "end_date" => $data['endDate'],
+            "start_date" => $start,
+            "end_date" => $end,
             "total_price" => $interval->d * $price,
             "status" => "pending"
         ];
@@ -223,8 +237,8 @@ class VehiculeController extends Controller
 
         $vehiculeAvailabilityData = [
             "vehicule_id" => $id,
-            "start_date" => $data['startDate'],
-            "end_date" => $data['endDate'],
+            "start_date" => $start,
+            "end_date" => $end,
             "is_available" => 1
         ];
 
