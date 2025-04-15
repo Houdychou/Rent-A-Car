@@ -71,13 +71,6 @@ ul li a {
     font-weight: 700;
 }
 
-.details-car {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-top: 3rem;
-}
-
 main h1 {
     font-size: 50px;
     font-weight: 700;

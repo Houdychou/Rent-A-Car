@@ -73,25 +73,31 @@
                 @endforeach
             </div>
         </div>
-        <form>
-            <h2>Or select a price you're comfortable with :</h2>
-            <small class="range-note">Only vehicles costing **less than or equal** to this amount will be shown.</small>
-            <p class="filter-price">0$</p>
-            <div class="range-div">
-                <label for="range">min: 0$</label>
+
+        <form action="">
+            <h2>Choose your budget</h2>
+            <small class="range-note">Only vehicles costing <strong>less than or equal</strong> to this amount will be shown.</small>
+            <div class="range-wrapper">
+                <div class="range-labels">
+                    <span>Min: $0</span>
+                    <span class="current-value filter-price">Selected: $<span id="range-value">0</span></span>
+                    <span>Max: $150</span>
+                </div>
                 <input type="range" min="0" max="150" name="price" id="price" value="0">
-                <label for="range">max: 150$</label>
             </div>
         </form>
+
         <div class="reset-btn-wrapper">
             <a href="/vehicules" class="reset-btn">Reset Filters</a>
         </div>
+
         <div class="cars">
             @if(isset($noResult) && $noResult)
                 <div class="no-results">Aucun véhicule ne correspond à vos critères.</div>
             @endif
-            <div class="errorDiv">
-            </div>
+
+            <div class="errorDiv"></div>
+
             <div class="grid-cars" id="vehicle-list">
                 @foreach($vehicules as $vehicule)
                     <div class="card-cars">

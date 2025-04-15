@@ -143,11 +143,109 @@ h1 {
     font-size: 50px;
 }
 
-.cars-top {
+
+form {
+    margin: 5rem 0 3rem 0;
+}
+
+form h2 {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.range-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 2rem auto;
+    max-width: 450px;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.range-labels {
     display: flex;
     justify-content: space-between;
-    align-items: end;
-    margin-bottom: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    color: #2d3436;
+    font-weight: 600;
+}
+
+input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: linear-gradient(to right, #6c5ce7, #a29bfe);
+    border-radius: 4px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    width: 22px;
+    background: #fff;
+    border: 3px solid #6c5ce7;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: 0.2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 22px;
+    width: 22px;
+    background: #fff;
+    border: 3px solid #6c5ce7;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-note {
+    display: block;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #636e72;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.reset-btn-wrapper {
+    text-align: center;
+}
+
+.reset-btn {
+    display: inline-block;
+    background-color: #dfe6e9;
+    color: #2d3436;
+    border: 2px solid #b2bec3;
+    margin: 1rem 0 3rem 0;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background-color: #b2bec3;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .link-cars {
@@ -287,113 +385,6 @@ h1 {
     color: rgba(0, 0, 0, 0.5);
 }
 
-form {
-    margin: 5rem 0 3rem 0;
-}
-
-form h2 {
-    text-align: center;
-    display: block;
-    font-size: 2rem;
-    color: black;
-    margin-bottom: 0.5rem;
-}
-
-.reset-btn-wrapper {
-    text-align: center;
-}
-
-.reset-btn {
-    display: inline-block;
-    background-color: #dfe6e9;
-    color: #2d3436;
-    border: 2px solid #b2bec3;
-    margin: 1rem 0 3rem 0;
-    padding: 6px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.reset-btn:hover {
-    background-color: #b2bec3;
-    color: white;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.filter-price {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.range-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px auto;
-    max-width: 400px;
-}
-
-.range-div label {
-    font-size: 1rem;
-    color: #555;
-}
-
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 200px;
-    height: 6px;
-    border-radius: 5px;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    outline: none;
-    transition: background 0.3s;
-}
-
-.range-note {
-    display: block;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.3rem;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid #0072ff;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
-
-input[type="range"]::-moz-range-thumb {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid black;
-    cursor: pointer;
-}
-
-input[type="range"]::-moz-range-track {
-    background: green;
-    height: 6px;
-    border-radius: 5px;
-}
-
 .no-results {
     margin: 2rem auto;
     padding: 1.5rem 2rem;
@@ -413,17 +404,6 @@ input[type="range"]::-moz-range-track {
     margin: 0;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .btn-orange {
     transition: 0.3s ease-in-out;
     display: inline-block;
@@ -438,4 +418,13 @@ input[type="range"]::-moz-range-track {
 .btn-orange:hover {
     opacity: 0.9;
     background-color: green;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
