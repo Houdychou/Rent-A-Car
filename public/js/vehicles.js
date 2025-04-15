@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+    const container = document.getElementById('vehicle-list');
     const links = document.querySelectorAll("a.custom-link");
     const range = document.querySelector("#price");
     const filterPriceP = document.querySelector(".filter-price");
@@ -7,18 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     range.addEventListener("input", function (e) {
         filterPriceP.textContent = range.value + "$";
-    })
+    });
 
     range.addEventListener("change", function () {
-        const url = `/vehicules/price/${range.value}`;
-        fetch(url, {
+        container.innerHTML = '<p>Loading...</p>';
+
+        links.forEach((links) => {
+            links.classList.remove("selected-dark");
+            links.classList.add("custom-link");
+        })
+
+        fetch(`/vehicules/price/${range.value}`, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
         })
             .then(response => response.json())
             .then(vehicules => {
-                const container = document.getElementById('vehicle-list');
                 container.innerHTML = '';
 
                 if (vehicules.length === 0) {
@@ -73,7 +78,17 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", function (e) {
             e.preventDefault();
 
+            links.forEach((links) => {
+                links.classList.remove("selected-dark");
+                links.classList.add("custom-link");
+            })
+
+            link.classList.remove("custom-link");
+            link.classList.add("selected-dark");
+
             const url = link.getAttribute("href");
+
+            container.innerHTML = '<p>Loading...</p>';
 
             fetch(url, {
                 headers: {
@@ -82,10 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => response.json())
                 .then(vehicules => {
-                    const container = document.getElementById('vehicle-list');
-
-                    divError.innerHTML = ``;
-                    divError.classList.remove("no-results");
                     container.innerHTML = '';
 
                     vehicules.forEach(v => {

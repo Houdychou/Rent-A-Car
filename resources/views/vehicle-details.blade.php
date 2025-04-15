@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Détail {{ $specificVehicule->brand . $specificVehicule->model }}">
+    <meta name="description" content="Details - {{ $specificVehicule->brand . $specificVehicule->model }}">
     <title>Details - {{ $specificVehicule->brand . " " . $specificVehicule->model }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
