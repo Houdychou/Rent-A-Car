@@ -48,6 +48,7 @@
 
             <div class="type-vehicle content-vehicle">
                 <a class="vehicle-type purple" href="/vehicules">All Vehicles</a>
+                <hr>
                 @foreach($typeVehicules as $type)
                     <a class="custom-link"
                        href="/vehicules/type/{{ urlencode($type->name) }}">{{ Str::title($type->name) }}</a>
@@ -56,6 +57,7 @@
 
             <div class="fuel-vehicle content-vehicle">
                 <a class="energy-type purple" href="/vehicules">All Energy Type</a>
+                <hr>
                 @foreach($fuelTypes as $fuel)
                     <a class="custom-link"
                        href="/vehicules/energy/{{ urlencode($fuel->fuel_type) }}">{{ Str::title($fuel->fuel_type) }}</a>
@@ -64,6 +66,7 @@
 
             <div class="gear-vehicle content-vehicle">
                 <a class="gear-type purple" href="/vehicules">All Type Of Gear</a>
+                <hr>
                 @foreach($gearType as $gear)
                     <a class="custom-link"
                        href="/vehicules/gear/{{ urlencode($gear->transmission) }}">{{ Str::title($gear->transmission) }}</a>
@@ -71,7 +74,7 @@
             </div>
         </div>
         <form>
-            <span>Select a price you're comfortable with:</span>
+            <h2>Or select a price you're comfortable with :</h2>
             <small class="range-note">Only vehicles costing **less than or equal** to this amount will be shown.</small>
             <p class="filter-price">0$</p>
             <div class="range-div">
@@ -80,6 +83,9 @@
                 <label for="range">max: 150$</label>
             </div>
         </form>
+        <div class="reset-btn-wrapper">
+            <a href="/vehicules" class="reset-btn">Reset Filters</a>
+        </div>
         <div class="cars">
             @if(isset($noResult) && $noResult)
                 <div class="no-results">Aucun véhicule ne correspond à vos critères.</div>
