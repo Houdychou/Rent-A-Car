@@ -189,7 +189,6 @@
         disable: finalDisabled,
         minDate: "today"
     });
-
 </script>
 
 <script src="{{ asset('js/carousel.js') }}"></script>
