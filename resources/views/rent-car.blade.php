@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Réserver - {{ Str::upper($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}">
-    <title>Réserver - {{ Str::title($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}</title>
+    <title>Rent - {{ Str::title($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -29,7 +29,7 @@
                     <li><a href="/" class="home">Home</a></li>
                     <li><a href="/vehicules" class="vehicules">Vehicles</a></li>
                     <li><a href="#" class="details">Details</a></li>
-                    <li><a href="/about" class="about">About us</a></li>
+                    <li><a href="#" class="about">About us</a></li>
                 </ul>
             </nav>
             <div class="help">
