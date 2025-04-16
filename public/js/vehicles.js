@@ -78,6 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", function (e) {
             e.preventDefault();
 
+            range.value = 0;
+            filterPriceP.textContent = range.value + "$";
+
             links.forEach((links) => {
                 links.classList.remove("selected-dark");
                 links.classList.add("custom-link");

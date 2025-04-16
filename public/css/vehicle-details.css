@@ -4,8 +4,9 @@
 }
 
 body {
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
     margin: 0;
+    animation: fadeIn 0.5s ease;
 }
 
 header {
@@ -126,13 +127,11 @@ a.details {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    cursor: pointer;
 }
 
 .zoom-container img {
-    width: 100%;
+    width: 700px;
     height: 500px;
-    object-fit: contain;
 }
 
 .zoom-container .contentZoom {
@@ -147,6 +146,7 @@ a.details {
     padding: 10px;
     border-radius: 50%;
     background-color: red;
+    cursor: pointer;
 }
 
 .right-part {
@@ -198,6 +198,13 @@ a.details {
     margin-left: 10px;
 }
 
+.cars-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 3rem;
+}
+
 .cars {
     margin-top: 7rem;
 }
@@ -232,6 +239,13 @@ a.details {
 .card-cars {
     border-radius: 12px;
     background-color: #FAFAFA;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-cars:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .container-cars {
@@ -347,4 +361,16 @@ a.details {
 .btn-orange:hover {
     opacity: 0.9;
     background-color: green;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

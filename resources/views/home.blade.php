@@ -18,30 +18,7 @@
 
 <body>
 <div class="container">
-    <header>
-        <div class="header-container">
-            <div class="car-rental">
-                <img src="{{ asset('images/icons/car-logo.svg') }}" alt="car logo">
-                <p>Car Rental</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/" class="home">Home</a></li>
-                    <li><a href="/vehicules" class="vehicules">Vehicles</a></li>
-                    <li><a href="#" class="details">Details</a></li>
-                    <li><a href="#" class="about">About us</a></li>
-                </ul>
-            </nav>
-            <div class="help">
-                <img src="{{ asset('images/icons/phone-icon.svg') }}" alt="phone image">
-                <div class="help-content">
-                    <p class="need-help">Need help?</p>
-                    <p class="phone-number">+996 247-1680</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    @include('components.header')
     <main>
         <div class="hero">
             <div class="hero-content">
@@ -167,37 +144,7 @@
             </div>
         </div>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="car-rental">
-                <img src="{{ asset('images/icons/car-logo.svg') }}" alt="car logo">
-                <p>Car Rental</p>
-            </div>
-            <div class="address card-footer">
-                <img src="{{ asset('images/icons/location-footer.svg') }}" alt="location image">
-                <div class="content">
-                    <p>Address</p>
-                    <p class="bold-text">Oxford Ave. Cary, NC 27511</p>
-                </div>
-            </div>
-            <div class="email card-footer">
-                <img src="{{ asset('images/icons/email-footer.svg') }}" alt="email image">
-                <div class="content">
-                    <p>Email</p>
-                    <p class="bold-text">nwiger@yahoo.com</p>
-                </div>
-            </div>
-            <div class="phone card-footer">
-                <img src="{{ asset('images/icons/phone-footer.svg') }}" alt="phone image">
-                <div class="content">
-                    <p>Phone</p>
-                    <p class="bold-text">+537 547-6401</p>
-                </div>
-            </div>
-        </div>
-        <p class="copy">&copy; Copyright Car Rental  2024. Made by Houdeyfa</p>
-    </footer>
+    @include('components.footer');
 </div>
 </body>
 </html>

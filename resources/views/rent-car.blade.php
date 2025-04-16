@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Rent - {{ Str::upper($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}">
+    <meta name="description"
+          content="Rent - {{ Str::upper($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}">
     <title>Rent - {{ Str::title($specificVehicule->brand) . " " . Str::title($specificVehicule->model) }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,29 +19,7 @@
 
 <body>
 <div class="container">
-    <header>
-        <div class="header-container">
-            <div class="car-rental">
-                <img src="{{ asset('images/icons/car-logo.svg') }}" alt="car logo">
-                <p>Car Rental</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/" class="home">Home</a></li>
-                    <li><a href="/vehicules" class="vehicules">Vehicles</a></li>
-                    <li><a href="#" class="details">Details</a></li>
-                    <li><a href="#" class="about">About us</a></li>
-                </ul>
-            </nav>
-            <div class="help">
-                <img src="{{ asset('images/icons/phone-icon.svg') }}" alt="phone image">
-                <div class="help-content">
-                    <p class="need-help">Need help?</p>
-                    <p class="phone-number">+996 247-1680</p>
-                </div>
-            </div>
-        </div>
-    </header>
+    @include('components.header')
 
     <main>
         @if (session('message'))
@@ -70,7 +49,8 @@
                     @csrf
                     <div class="form-content">
                         <label for="startDate">Start date</label>
-                        <input type="text" id="startDate" name="startDate" placeholder="Select a start date" value="{{ old("startDate") }}">
+                        <input type="text" id="startDate" name="startDate" placeholder="Select a start date"
+                               value="{{ old("startDate") }}">
                         @error("startDate")
                         <p class="error">{{ $message }}</p>
                         @enderror
@@ -78,9 +58,10 @@
 
                     <div class="form-content">
                         <label for="endDate">End date</label>
-                        <input type="text" id="endDate" name="endDate" placeholder="Select a return date" value="{{ old("endDate") }}">
+                        <input type="text" id="endDate" name="endDate" placeholder="Select a return date"
+                               value="{{ old("endDate") }}">
                         @error("endDate")
-                         <p class="error">{{ $message }}</p>
+                        <p class="error">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -109,7 +90,8 @@
                 <div class="hero-left">
                     <h2 class="hero-title">Looking for a car?</h2>
                     <h2 class="phone">+537 547-6401</h2>
-                    <p class="hero-text">Call to this number to receive an incredibly amount of beautiful cars for free!</p>
+                    <p class="hero-text">Call to this number to receive an incredibly amount of beautiful cars for
+                        free!</p>
                     <a class="all-cars btn-orange" href="/vehicules">Book Now</a>
                 </div>
                 <div class="hero-right">
@@ -119,74 +101,33 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="car-rental">
-                <img src="{{ asset('images/icons/car-logo.svg') }}" alt="car logo">
-                <p>Car Rental</p>
-            </div>
-            <div class="address card-footer">
-                <img src="{{ asset('images/icons/location-footer.svg') }}" alt="location image">
-                <div class="content">
-                    <p>Address</p>
-                    <p class="bold-text">Oxford Ave. Cary, NC 27511</p>
-                </div>
-            </div>
-            <div class="email card-footer">
-                <img src="{{ asset('images/icons/email-footer.svg') }}" alt="email image">
-                <div class="content">
-                    <p>Email</p>
-                    <p class="bold-text">nwiger@yahoo.com</p>
-                </div>
-            </div>
-            <div class="phone card-footer">
-                <img src="{{ asset('images/icons/phone-footer.svg') }}" alt="phone image">
-                <div class="content">
-                    <p>Phone</p>
-                    <p class="bold-text">+537 547-6401</p>
-                </div>
-            </div>
-        </div>
-        <p class="copy">&copy; Copyright Car Rental 2024. Made by Houdeyfa</p>
-    </footer>
+    @include('components.footer')
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     const reservedRanges = @json($reservedDates);
-    const disabledDates = new Set();
+    const disabledDates = [];
 
     reservedRanges.forEach(range => {
         let start = new Date(range.start_date);
         const end = new Date(range.end_date);
 
         while (start <= end) {
-            disabledDates.add(start.toISOString().split('T')[0]);
+            disabledDates.push(start.toISOString().split('T')[0]);
             start.setDate(start.getDate() + 1);
         }
     });
 
-    const preBlockedDates = new Set();
-
-    reservedRanges.forEach(range => {
-        const start = new Date(range.start_date);
-        const previous = new Date(start);
-        previous.setDate(previous.getDate() - 1);
-
-        preBlockedDates.add(previous.toISOString().split('T')[0]);
-    });
-
-    const finalDisabled = Array.from(new Set([...disabledDates, ...preBlockedDates]));
-
     flatpickr("#startDate", {
         dateFormat: "Y-m-d",
-        disable: finalDisabled,
+        disable: disabledDates,
         minDate: "today"
     });
 
     flatpickr("#endDate", {
         dateFormat: "Y-m-d",
-        disable: finalDisabled,
+        disable: disabledDates,
         minDate: "today"
     });
 </script>

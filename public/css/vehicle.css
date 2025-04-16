@@ -4,8 +4,9 @@
 }
 
 body {
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
     margin: 0;
+    animation: fadeIn 0.5s ease;
 }
 
 header {
@@ -84,7 +85,7 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .select-content a {
@@ -143,7 +144,6 @@ h1 {
     font-size: 50px;
 }
 
-
 form {
     margin: 5rem 0 3rem 0;
 }
@@ -153,6 +153,7 @@ form h2 {
     display: block;
     font-size: 2rem;
     color: black;
+    margin-top: 0;
     margin-bottom: 0.5rem;
 }
 
@@ -234,7 +235,7 @@ input[type="range"]::-moz-range-thumb {
     background-color: #dfe6e9;
     color: #2d3436;
     border: 2px solid #b2bec3;
-    margin: 1rem 0 3rem 0;
+    margin: 1rem 0 7rem 0;
     padding: 6px 14px;
     border-radius: 6px;
     cursor: pointer;
@@ -273,6 +274,13 @@ input[type="range"]::-moz-range-thumb {
 .card-cars {
     border-radius: 12px;
     background-color: #FAFAFA;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-cars:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .container-cars {
@@ -423,8 +431,10 @@ input[type="range"]::-moz-range-thumb {
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }

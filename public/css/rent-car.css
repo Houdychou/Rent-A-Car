@@ -4,8 +4,9 @@
 }
 
 body {
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
     margin: 0;
+    animation: fadeIn 0.5s ease;
 }
 
 header {
@@ -138,9 +139,8 @@ main h1 {
 }
 
 .zoom-container img {
-    width: 100%;
+    width: 700px;
     height: 500px;
-    object-fit: contain;
 }
 
 .zoom-container .contentZoom {
@@ -321,16 +321,6 @@ form button:hover {
     animation: fadeIn 0.4s ease-in-out;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 .btn-orange {
     margin-top: 20px;
     transition: 0.3s ease-in-out;
@@ -346,4 +336,16 @@ form button:hover {
 .btn-orange:hover {
     opacity: 0.9;
     background-color: green;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

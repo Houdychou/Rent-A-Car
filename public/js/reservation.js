@@ -13,11 +13,11 @@ function calculerPrixTotal() {
         let prixTotal = diffJour * pricePerDay;
 
         console.log(pricePerDay * diffJour)
-        totalPriceElement.innerHTML = `Total Price : ${prixTotal}$`
+        totalPriceElement.innerHTML = `Total Price : ${prixTotal}$`;
     } else {
-        totalPriceElement.innerHTML = `Total Price : 0$`
+        totalPriceElement.innerHTML = `Total Price : 0$`;
     }
 }
 
-startDateInput.addEventListener("change", calculerPrixTotal)
-endDateInput.addEventListener("change", calculerPrixTotal)
+startDateInput.addEventListener("change", calculerPrixTotal);
+endDateInput.addEventListener("change", calculerPrixTotal);
