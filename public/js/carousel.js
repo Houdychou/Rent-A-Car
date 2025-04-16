@@ -106,9 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (e.key === "ArrowLeft") {
             currentIndex = (currentIndex - 1 + allCarouselImg.length) % allCarouselImg.length;
             mainImg.src = allCarouselImg[currentIndex].src;
-        } else if (e.key === "Escape") {
-            body.style.overflow = "";
-            closeZoom();
         }
     })
 });
