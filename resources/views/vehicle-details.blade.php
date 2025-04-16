@@ -56,7 +56,11 @@
                     </div>
                     <div class="specifications">
                         <h3>Air Conditionner</h3>
-                        <span>{{ Str::title($specificVehicule->doors) }}</span>
+                        @if($specificVehicule->air_conditioning === 1)
+                            <span>Included</span>
+                        @else
+                            <span>None</span>
+                        @endif
                     </div>
                     <div class="specifications">
                         <h3>Seats</h3>
